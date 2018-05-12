@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Despesas App
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item *ngFor="let despesa of despesas">
+    <ion-icon *ngIf="despesa.tipo == 'Mercado'" name="cart" item-left large></ion-icon>
+    <ion-icon *ngIf="despesa.tipo == 'Lazer'" name="american-football" item-left large></ion-icon>
+    <ion-icon *ngIf="despesa.tipo == 'Saúde'" name="medical" item-left large></ion-icon>
+    <h2>{{despesa.nome}}</h2>
+    <p>{{despesa.valor | currency:'BRL':true:'1.2-2' }}</p>
+    <ion-note item-right>{{despesa.data | date: 'dd/MM/yyyy'}}</ion-note>
+    <ion-icon  (click)="del(despesa.id)" name="trash" item-right></ion-icon>
+  </ion-item>
+
+<ion-fab right bottom>
+<button ion-fab color="primary" (click)="add()">
+  <ion-icon name="add" color="light" large></ion-icon>
+</button>
+</ion-fab>
+</ion-content>
